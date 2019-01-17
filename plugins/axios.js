@@ -5,7 +5,7 @@ export default function({ $axios, redirect, ...other }) {
 
   $axios.onError(error => {
     const code = parseInt(error.response && error.response.status);
-    console.log('onError axios');
+    // console.log('onError axios');
     if (code === 400) {
       redirect('/400');
     }
