@@ -1,6 +1,8 @@
 <template>
   <div>
+    <div>如何匹配菜单</div>
     <nuxt/>
+    <div>这是统一底部</div>
   </div>
 </template>
 

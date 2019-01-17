@@ -1,35 +1,37 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
-      <h1 class="title">
-        nuxt-vue-element-admin
-      </h1>
-      <h2 class="subtitle">
-        后台管理集成方案
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+      <logo/>这是首页
+      <el-button @click="handleGoUser">去用户页面</el-button>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from '~/components/Logo.vue';
 
 export default {
   components: {
     Logo
+  },
+  created() {
+    console.log(this.$axios);
+  },
+  asyncData(context) {
+    console.log(context.$axios);
+  },
+  methods: {
+    async handleGoUser() {
+      const result = await this.$axios.$post('/login/jwt', {
+        data: {
+          name: 'admin',
+          password: 'abc.123'
+        }
+      });
+      console.log(result);
+    }
   }
-}
+};
 </script>
 
 <style>
