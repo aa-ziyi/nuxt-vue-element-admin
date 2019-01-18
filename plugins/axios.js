@@ -1,7 +1,9 @@
+import auth from '../utils/index';
+
 export default function({ $axios, redirect, app, ...other }) {
   $axios.onRequest(config => {
     config.headers['Content-Type'] = 'application/json';
-    let token = 'get token';
+    let token = auth.getToken();
     if (token) {
       config.headers['x-auth-token'] = token;
     }
@@ -10,11 +12,10 @@ export default function({ $axios, redirect, app, ...other }) {
 
   $axios.onResponse(response => {
     const { data } = response;
-    console.log({ ...other });
     // 拦截状态做重定项
-    if (data.status === '401.1') {
-      app.router.push('/user');
-      return;
+    if (data.status === '401') {
+      app.router.push('/login');
+      return {};
     }
   });
 

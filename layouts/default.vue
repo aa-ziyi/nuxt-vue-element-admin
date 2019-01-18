@@ -1,10 +1,44 @@
 <template>
   <div>
-    <div>如何匹配菜单</div>
+    <customMenu :permissions="permissions"/>
     <nuxt/>
     <div>这是统一底部</div>
   </div>
 </template>
+
+<script>
+import auth from '~/utils/index';
+import customMenu from '~/components/menu';
+
+export default {
+  components: {
+    customMenu
+  },
+  data() {
+    return {
+      permissions: []
+    };
+  },
+  created() {
+    if (auth.getCurrentUser()) {
+      this.permissions = JSON.parse(auth.getCurrentUser()).permissions || [];
+      return;
+    }
+    this.getUser();
+  },
+  methods: {
+    async getUser() {
+      const result = await this.$axios.$get('/users/current');
+      if (result && result.body) {
+        auth.setCurrentUser(result.body);
+        console.log(result.body.permissions);
+        this.permissions = result.body.permissions || [];
+      }
+      console.log(result);
+    }
+  }
+};
+</script>
 
 <style>
 html {

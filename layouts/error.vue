@@ -1,5 +1,5 @@
 <template>
-  <div>这是错误页面</div>
+  <div>这是异常页面</div>
 </template>
 
 <script>

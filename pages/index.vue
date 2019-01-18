@@ -1,8 +1,8 @@
 <template>
   <section class="container">
     <div>
-      <logo/>这是首页
-      <el-button @click="handleGoUser">去用户页面</el-button>
+      <logo/>
+      <div>这是首页</div>
     </div>
   </section>
 </template>
@@ -20,17 +20,7 @@ export default {
   asyncData(context) {
     console.log(context.$axios);
   },
-  methods: {
-    async handleGoUser() {
-      const result = await this.$axios.$post('/login/jwt', {
-        data: {
-          name: 'admin',
-          password: 'abc.123'
-        }
-      });
-      console.log(result);
-    }
-  }
+  methods: {}
 };
 </script>
 
