@@ -3,7 +3,8 @@ const pkg = require('./package');
 module.exports = {
   mode: 'spa',
   router: {
-    middleware: 'auth'
+    middleware: 'auth',
+    mode: 'hash'
   },
   /*
   ** Headers of the page

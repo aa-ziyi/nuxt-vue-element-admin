@@ -37,3 +37,14 @@ export default {
   }
 };
 </script>
+
+
+<style lang="less" scoped>
+.el-menu.el-menu--horizontal {
+  border-bottom: none;
+}
+
+.el-menu--horizontal > .el-menu-item.is-active {
+  border-bottom: none;
+}
+</style>

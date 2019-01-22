@@ -5,7 +5,6 @@ const CURRENT_USER = 'CURRENT_USER';
 
 export default {
   getCurrentUser: function() {
-    console.log('getCurrentUser');
     return store.get(CURRENT_USER);
   },
   setCurrentUser: function(user) {
